@@ -8,24 +8,24 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.club-name') }}</title>
 
     <!-- Styles -->
-    {!! Html::style(asset('public/css/app.css')) !!}
+{!! Html::style(asset('public/css/app.css')) !!}
 
-    <!-- Scripts -->
+<!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
+                'csrfToken' => csrf_token(),
         ]); ?>
     </script>
 </head>
 <body>
-    <div id="app">
-        @yield('content')
-    </div>
+<div id="app">
+    @yield('content')
+</div>
 
-    <!-- Scripts -->
-    {!! Html::script(asset('public/js/app.js')) !!}
+<!-- Scripts -->
+{!! Html::script(asset('public/js/app.js')) !!}
 </body>
 </html>

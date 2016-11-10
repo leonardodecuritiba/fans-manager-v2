@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use App\Notifications\FansApiPasswordReset as ResetPasswordNotification;
 
 class User extends Authenticatable
 {
@@ -23,7 +24,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'contact_id',
-        'login',
+        'username',
         'email',
         'password',
         'remember_token',
@@ -38,15 +39,32 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    static public function findUsername($username)
+    {
+        $User = User::where("username", $username)->first();
+        return (count($User) > 0) ? $User->email : NULL;
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function fan()
+    {
+        return $this->belongsTo('App\Fan', 'id', 'user_id');
+    }
+
     public function contact()
     {
         return $this->hasOne('App\Contact', 'id', 'contact_id');
-    }
-
-    static public function findLogin($login)
-    {
-        $User = User::where("login",$login)->first();
-        return (count($User)>0)?$User->email:NULL;
     }
 
     public function validate($token)

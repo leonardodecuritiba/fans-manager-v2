@@ -41,7 +41,7 @@ class FansRequest extends FormRequest
                 return [
                     'name'                  => 'required|min:3|max:255',
                     'cpf'                   => 'required|unique:fans|min:7',
-                    'login'                 => 'required|unique:users|min:10|max:100',
+                    'username' => 'required|unique:users|min:10|max:100',
                     'email'                 => 'required|email|min:10|max:255',
                     'password'              => 'required|min:6|confirmed',
                     'password_confirmation' => 'required|min:6',
@@ -55,7 +55,7 @@ class FansRequest extends FormRequest
             {
                 return [
                     'email'     => 'required|min:10',
-                    'login'     => 'required|unique:users,login,' . $fan->user_id . ',id|min:10|max:100',
+                    'username' => 'required|unique:users,username,' . $fan->user_id . ',id|min:10|max:100',
                     'password'  => 'required|min:6',
                     'name'      => 'required|min:3|max:255',
                     'cpf'       => 'required|unique:fans,cpf,' . $fan->id . ',id|min:7',

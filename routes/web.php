@@ -21,6 +21,7 @@ Route::resource('clubs','ClubsController');
 Route::get('visualizar/fans','FansController@visualizar');
 Route::get('validar/fans/{fan}/{token}','FansController@validate_fan')->name('validar.fans');
 Route::post('logar','FansController@logar')->name('fans.logar');
+Route::post('welcome/fans/{id}', 'FansController@welcome')->name('fans.welcome');
 
 
 
@@ -52,3 +53,7 @@ Route::get('sendemail', function () {
 
     return "Your email has been sent successfully";
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/logout', 'Auth\LoginController@logout');

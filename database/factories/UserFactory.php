@@ -18,7 +18,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'contact_id' => function () {
             return factory(App\Contact::class)->create()->id;
         },
-        'login'             => $faker->word,
+        'username' => $faker->word,
         'email'             => $faker->unique()->safeEmail,
         'password'          => $password ?: $password = \Illuminate\Support\Facades\Hash::make('123456'),
         'remember_token'    => str_random(60),

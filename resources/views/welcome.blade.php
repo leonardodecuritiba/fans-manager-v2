@@ -8,14 +8,22 @@
             <header>
                 <section class="center-content">
                     <div class="login">
-                        <p><span class="highlight">Acesse</span> sua conta</p>
-                        <form id="loginForm" class="form-holder">
-                            <input type="text" name="login" placeholder="Login">
-                            <input type="password" name="senha" placeholder="Senha">
-                            <input type="submit" disabled value="Entrar">
-                            <p>Esqueceu sua <a href="{{ url('/password/reset') }}" class="highlight">senha?</a></p>
-                            <a href="{{route('fans.create')}}">Cadastre-se</a>
-                        </form>
+                        @if (Auth::guest())
+                            <p><span class="highlight">Acesse</span> sua conta</p>
+                            <form id="loginForm" class="form-holder" method="POST" action="{{ url('/logar') }}">
+                                {{ csrf_field() }}
+                                <input type="text" name="username" value="{{ old('username') }}" placeholder="Login"
+                                       autofocus required>
+                                <input id="password" type="password" name="password" placeholder="Senha" required>
+                                <input type="submit" value="Entrar">
+                                <p>Esqueceu sua <a href="{{ url('/password/reset') }}" class="highlight">senha?</a></p>
+                                <a href="{{route('fans.create')}}">Cadastre-se</a>
+                            </form>
+                            <a href="{{ url('/') }}">Home</a>
+                        @else
+                            <p>{{ Auth::user()->username }} <span class="highlight">Logado</span></p>
+                            <p><a href="{{ url('/logout') }}" class="highlight">Sair</a></p>
+                        @endif
                     </div>
                 </section>
             </header>

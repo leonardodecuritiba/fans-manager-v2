@@ -47,6 +47,22 @@ class FansController extends Controller
         return view('pages.fans.create');
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function welcome($id)
+    {
+        $Fan = Fan::find($id);
+        $content = [
+            'status' => 1,
+            'response' => trans('messages.crud.MSS', ['name' => $this->name]),
+            'content' => $Fan,
+        ];
+        return view('pages.fans.welcome')
+            ->with('content', $content);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -74,13 +90,12 @@ class FansController extends Controller
         ];
 
         Mail::to($Fan->user->email)
-            ->send(new ValidateFan($Fan));
+            ->queue(new ValidateFan($Fan));
 
         if ($request->is('api/*')) {
             return response($content, $status = 200,[]);
         }
-        return view('pages.fans.welcome')
-            ->with('content', $content);
+        return redirect()->to(['fans.welcome', $Fan->id]);
     }
 
     /**
@@ -215,23 +230,36 @@ class FansController extends Controller
 
     public function logar(Request $request)
     {
-        $credentials = $request->only('login', 'password');
-        $user = User::where('login',$credentials['login'])
-            ->where('validated',1)->first();
+        $credentials = $request->only('username', 'password');
+        $user = User::where('username', $credentials['username'])->first();
         if(count($user)){
-            if (Hash::check($credentials['password'], $user->password)) {
+            if ($user->validated == 1) {
+                if (Hash::check($credentials['password'], $user->password)) {
+                    $content = [
+                        'status' => 1,
+                        'response' => trans('messages.crud.MLS', ['name' => $this->name]),
+                        'content' => $user,
+                    ];
+                } else {
+                    $content = [
+                        'status' => 0,
+                        'response' => trans('messages.crud.MLE')
+                    ];
+                }
+            } else {
                 $content = [
-                    'status'    => 1,
-                    'response'  => trans('messages.crud.MLS', ['name' => $this->name]),
-                    'content'   => $user,
+                    'status' => 0,
+                    'response' => trans('messages.crud.MLVE')
                 ];
-                return response($content, $status = 200,[]);
             }
+
+        } else {
+            $content = [
+                'status' => 0,
+                'response' => trans('messages.crud.MLE')
+            ];
         }
-        $content = [
-            'status'    => 0,
-            'response'  => trans('messages.crud.MLE')
-        ];
         return response($content, $status = 200,[]);
+
     }
 }

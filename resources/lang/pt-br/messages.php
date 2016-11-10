@@ -44,7 +44,7 @@ return [
         //LOGGED
         'MLS'             => ':name logado com sucesso!',
         'MLE'             => 'Login/senha inválidos!',
-        'MLVE'            => 'Usuário não validado! Por favor, clique no link enviado por email para validar sua conta!',
+        'MLVE' => 'Este usuário ainda não foi validado! Por favor, clique no link enviado por email para validar sua conta!',
     ]
 
 ];

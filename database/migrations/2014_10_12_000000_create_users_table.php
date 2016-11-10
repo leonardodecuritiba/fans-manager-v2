@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('contact_id');
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
 
-            $table->string('login', 100)->unique();
+            $table->string('username', 100)->unique();
             $table->string('email');
             $table->string('password');
             $table->boolean('validated')->default(0);
