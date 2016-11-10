@@ -1,0 +1,134 @@
+body{
+	font-family: 'Roboto', sans-serif;
+	color:#fff;
+	background: url("../images/home_bg.jpg") top center no-repeat;
+	background-size: 100% 100%;
+}
+
+@font-face {
+  font-family: 'leaguegothic';
+  src: url('../fonts/leaguegothic-regular.otf');
+
+  src: url('../fonts/leaguegothic-regular-webfont.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/leaguegothic-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/leaguegothic-regular-webfont.woff2') format('woff2'),
+       url('../fonts/leaguegothic-regular-webfont.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/leaguegothic-regular-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/leaguegothic-regular-webfont.svg#league_gothicregular') format('svg'); /* Legacy iOS */
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 920px;
+  max-width: 100%;
+}
+.container-text 
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 920px;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 20px;
+}
+.container-text:before, .container-text:after {
+  display: table;
+  content: "";
+}
+.container-text:after {
+  clear: both;
+}
+.container-footer
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 920px;
+  max-width: 100%; 
+}
+.container:before, .container:after {
+  display: table;
+  content: "";
+}
+.container:after {
+  clear: both;
+}
+
+.textoAmarelo { color: #FACB1B;/* letter-spacing: 2px;*/}
+
+.tituloPrincipal {
+  font-family: 'leaguegothic';
+  font-weight: normal;
+  font-size: 28px;
+  margin: 0;
+}
+
+.tituloPrincipal .textoAmarelo {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+
+
+
+
+.caixa2 {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.caixa2 .caixaInterior {
+  width: 420px;
+}
+
+.espacador {
+  width: 90%;
+  padding: 0 5%;
+}
+
+#cadastro .espacador {
+  width: 85%;
+}
+
+.naoQuebrar {
+  display: inline-block;
+}
+label.naoQuebrar.meio.margem {
+  margin-right: 20px;
+}
+#cadastroForm select {
+  height: 34px !important;
+}
+
+#cadastroForm select,
+#cadastroForm textarea,
+#cadastroForm input[type=text],
+#cadastroForm input[type=password] {
+  padding: 4px 0;
+  background-color: #E9EEF1;
+}
+
+#cadastroForm .meio {
+  width: 155px;
+}
+
+.espacador {
+  width: 90%;
+  padding: 0 5%;
+}
+
+#cadastro .espacador {
+  width: 85%;
+}
+.larguraDiferente {
+  width: 300px;
+}
+
+
+/******************************************/

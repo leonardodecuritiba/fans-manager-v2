@@ -1,0 +1,39 @@
+.form label {
+  float: left;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0;
+  text-align: left;
+  width: auto;
+  margin-top: 10px;
+}
+
+li.credit-card-number {
+  float: left;
+}
+
+.input-box {
+  clear: both;
+}
+ .size400 {
+  width: 385px !important;
+}
+ .numcartao {
+  width: 235px !important;
+}
+ .cc {
+  width: 130px !important;
+}
+.required{
+    font: red;
+}
+.form input, select{
+    padding: 5px;
+    margin-left:5px;
+    margin-top:5px;
+}
+.btn button{
+    margin-top: 10px;
+    margin-left: 25px;
+    padding: 10px !important;
+}
